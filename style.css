@@ -5,158 +5,138 @@
 }
 
 body {
-    background-color: #FFF0F5;
     font-family: 'Nunito', sans-serif;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    background:
+        radial-gradient(circle at top, #3a1c71, #1a1a2e 60%);
     overflow: hidden;
-    background-image:
-        radial-gradient(circle at 20% 80%, #ffd6e0 0%, transparent 45%),
-        radial-gradient(circle at 80% 20%, #ffb3c1 0%, transparent 45%),
-        radial-gradient(circle at 50% 50%, #fff7fa 0%, transparent 60%);
+    color: #fff;
 }
 
-/* Floating hearts + sparkles */
+/* Floating stars */
 .hearts-bg {
     position: fixed;
     inset: 0;
     pointer-events: none;
     z-index: 0;
-    overflow: hidden;
 }
 
 .hearts-bg::before,
 .hearts-bg::after {
-    content: '💗 💕 ✨ 💖 💝 ✨';
+    content: '✨ ✦ ✧ ✨ ✦';
     position: absolute;
-    font-size: 1.6rem;
-    opacity: 0.2;
-    animation: floatHearts 14s linear infinite;
+    font-size: 1.2rem;
+    opacity: 0.25;
+    animation: floatStars 18s linear infinite;
     white-space: nowrap;
     top: 100%;
-    left: 10%;
+    left: 20%;
 }
 
 .hearts-bg::after {
-    animation-delay: 7s;
-    left: 55%;
-    content: '✨ 💕 💖 ✨ 💗';
+    left: 60%;
+    animation-delay: 9s;
 }
 
-@keyframes floatHearts {
-    from { transform: translateY(0); opacity: 0.2; }
+@keyframes floatStars {
+    from { transform: translateY(0); opacity: 0.25; }
     to { transform: translateY(-120vh); opacity: 0; }
 }
 
+/* Glass card */
 .container {
     position: relative;
     z-index: 1;
     text-align: center;
-    padding: 44px 24px;
+    padding: 48px 36px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 28px;
+    backdrop-filter: blur(14px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
 }
 
+/* Title */
 h1 {
-    font-size: 2.5rem;
-    color: #e64980;
-    font-weight: 900;
-    margin-bottom: 22px;
-    text-shadow: 2px 2px 0 rgba(255, 182, 193, 0.6);
-    animation: wiggle 2.5s ease-in-out infinite;
+    font-size: 2.4rem;
+    font-weight: 800;
+    margin-bottom: 24px;
+    background: linear-gradient(90deg, #ff9a9e, #fad0c4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-@keyframes wiggle {
-    0%, 100% { transform: rotate(-1deg); }
-    50% { transform: rotate(1deg); }
-}
-
+/* GIF */
 .gif-container {
-    margin: 22px auto;
-    display: flex;
-    justify-content: center;
+    margin: 24px auto;
 }
 
 #cat-gif {
-    width: 210px;
-    height: 210px;
+    width: 220px;
+    height: 220px;
     object-fit: contain;
-    filter: drop-shadow(0 10px 20px rgba(255,105,180,0.35));
-    transition: transform 0.3s ease;
+    filter: drop-shadow(0 10px 30px rgba(0,0,0,0.4));
+    animation: floatCat 4s ease-in-out infinite;
 }
 
-#cat-gif:hover {
-    transform: scale(1.05);
+@keyframes floatCat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
 }
 
+/* Buttons */
 .buttons {
     display: flex;
-    gap: 22px;
+    gap: 24px;
     justify-content: center;
-    align-items: center;
-    margin-top: 34px;
-    flex-wrap: wrap;
+    margin-top: 32px;
 }
 
-/* YES BUTTON (cute & inviting) */
+/* YES */
 #yes-btn {
-    background: linear-gradient(135deg, #ff7eb3, #ff4d8d);
-    color: white;
+    background: linear-gradient(135deg, #ff7eb3, #ff758c);
+    color: #fff;
     border: none;
     border-radius: 999px;
-    font-size: 1.7rem;
-    font-weight: 900;
-    font-family: 'Nunito', sans-serif;
-    padding: 18px 52px;
+    padding: 16px 46px;
+    font-size: 1.5rem;
+    font-weight: 800;
     cursor: pointer;
-    box-shadow: 0 10px 28px rgba(255, 77, 141, 0.45);
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: 0 12px 30px rgba(255, 118, 168, 0.45);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 #yes-btn:hover {
-    transform: scale(1.1) translateY(-3px);
-    box-shadow: 0 14px 36px rgba(255, 77, 141, 0.6);
+    transform: scale(1.08);
+    box-shadow: 0 16px 40px rgba(255, 118, 168, 0.6);
 }
 
-#yes-btn:active {
-    transform: scale(0.96);
-}
-
-/* NO BUTTON (smaller & sneaky) */
+/* NO */
 #no-btn {
-    background: linear-gradient(135deg, #ffc2d1, #ff8fab);
-    color: #7a003c;
+    background: rgba(255, 255, 255, 0.25);
+    color: #fff;
     border: none;
     border-radius: 999px;
+    padding: 10px 26px;
     font-size: 1rem;
-    font-weight: 700;
-    font-family: 'Nunito', sans-serif;
-    padding: 12px 30px;
     cursor: pointer;
-    transition: left 0.25s ease, top 0.25s ease, transform 0.15s;
-    box-shadow: 0 6px 16px rgba(255, 143, 171, 0.45);
+    backdrop-filter: blur(6px);
+    transition: left 0.25s ease, top 0.25s ease;
 }
 
-#no-btn:hover {
-    transform: scale(1.05);
-}
-
-/* Teasing message */
+/* Tease text */
 #tease-toast {
-    margin-top: 18px;
-    font-size: 1.05rem;
-    color: #d63384;
-    font-weight: 800;
-    font-style: italic;
+    margin-top: 20px;
+    font-size: 1rem;
     opacity: 0;
-    transform: translateY(8px);
-    transition: opacity 0.35s ease, transform 0.35s ease;
-    min-height: 1.6rem;
+    color: #ffd6e0;
+    transition: opacity 0.3s ease;
 }
 
 #tease-toast.show {
     opacity: 1;
-    transform: translateY(0);
 }
 
 /* Music button */
@@ -164,49 +144,36 @@ h1 {
     position: fixed;
     bottom: 22px;
     right: 22px;
-    background: rgba(255, 255, 255, 0.9);
-    border: none;
+    width: 54px;
+    height: 54px;
     border-radius: 50%;
-    width: 56px;
-    height: 56px;
-    font-size: 1.5rem;
+    border: none;
+    background: rgba(255,255,255,0.25);
+    font-size: 1.4rem;
+    color: white;
     cursor: pointer;
     backdrop-filter: blur(10px);
-    box-shadow: 0 6px 18px rgba(255, 105, 180, 0.35);
-    transition: transform 0.2s ease;
-    z-index: 100;
-}
-
-#music-toggle:hover {
-    transform: scale(1.15) rotate(8deg);
+    box-shadow: 0 8px 22px rgba(0,0,0,0.4);
 }
 
 /* YES PAGE */
 .yes-container h1.yes-title {
-    font-size: 3rem;
-    color: #ff4d8d;
-    animation: bounceTitle 0.6s ease infinite alternate;
-}
-
-@keyframes bounceTitle {
-    from { transform: translateY(0) rotate(-1deg); }
-    to { transform: translateY(-14px) rotate(1deg); }
+    font-size: 2.8rem;
+    margin-bottom: 20px;
 }
 
 .yes-message {
-    font-size: 1.45rem;
-    color: #e91e8c;
-    font-weight: 800;
-    margin-top: 26px;
-    animation: fadeIn 1s ease 0.4s both;
+    font-size: 1.3rem;
+    color: #ffd6e0;
+    animation: fadeUp 1s ease both;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(12px); }
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
 .yes-container #cat-gif {
-    width: 280px;
-    height: 280px;
+    width: 260px;
+    height: 260px;
 }
